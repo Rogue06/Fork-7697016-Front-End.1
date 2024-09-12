@@ -37,10 +37,9 @@ for (let i = 0; i < pieces.length; i++) {
  }
 
  
- //gestion des boutons 
+//gestion des boutons 
 
 const boutonTrier = document.querySelector(".btn-trier");
-
 boutonTrier.addEventListener("click", function () {
     const piecesOrdonnees = Array.from(pieces);
     piecesOrdonnees.sort(function (a, b) {
@@ -50,7 +49,6 @@ boutonTrier.addEventListener("click", function () {
 });
 
 const boutonFiltrer = document.querySelector(".btn-filtrer");
-
 boutonFiltrer.addEventListener("click", function () {
     const piecesFiltrees = pieces.filter(function (piece) {
         return piece.prix <= 35;
@@ -58,21 +56,39 @@ boutonFiltrer.addEventListener("click", function () {
    console.log(piecesFiltrees)
 });
 
- const filtrerPiecesAvcDescription = document.querySelector(".btn-filtrer-description"); 
-
- filtrerPiecesAvcDescription.addEventListener("click", function () {
+const filtrerPiecesAvcDescription = document.querySelector(".btn-filtrer-description"); 
+filtrerPiecesAvcDescription.addEventListener("click", function () {
      const piecesFiltreesDescription = pieces.filter(function (piece) {
          return piece.description
      });
      console.log(piecesFiltreesDescription)
  });
  
- const btnTrierDecroissant= document.querySelector(".btn-trier-decroissant");
- 
- btnTrierDecroissant.addEventListener("click", function () {
+const btnTrierDecroissant= document.querySelector(".btn-trier-decroissant");
+btnTrierDecroissant.addEventListener("click", function () {
      const piecesOrdonneesDecr = Array.from(pieces);
      piecesOrdonneesDecr.sort(function (a, b) {
          return b.prix - a.prix;
       });
       console.log(piecesOrdonneesDecr);
  });
+
+
+const noms = pieces.map(piece => piece.nom);
+for(let i = pieces.length -1 ; i >= 0; i--){
+   if(pieces[i].prix > 35){
+       noms.splice(i,1)
+   }
+}
+
+
+//Création de la liste
+const abordablesElements = document.createElement('ul');
+//Ajout de chaque nom à la liste
+for(let i=0; i < noms.length ; i++){
+    const nomElement = document.createElement('li');
+    nomElement.innerText = noms[i];
+    abordablesElements.appendChild(nomElement)
+}
+// Ajout de l'en-tête puis de la liste au bloc résultats filtres
+document.querySelector('.abordables').appendChild(abordablesElements)
