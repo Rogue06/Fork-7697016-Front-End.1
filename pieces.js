@@ -38,6 +38,7 @@ for (let i = 0; i < pieces.length; i++) {
 
  
  //gestion des boutons 
+
 const boutonTrier = document.querySelector(".btn-trier");
 
 boutonTrier.addEventListener("click", function () {
@@ -56,3 +57,22 @@ boutonFiltrer.addEventListener("click", function () {
     });
    console.log(piecesFiltrees)
 });
+
+ const filtrerPiecesAvcDescription = document.querySelector(".btn-filtrer-description"); 
+
+ filtrerPiecesAvcDescription.addEventListener("click", function () {
+     const piecesFiltreesDescription = pieces.filter(function (piece) {
+         return piece.description
+     });
+     console.log(piecesFiltreesDescription)
+ });
+ 
+ const btnTrierDecroissant= document.querySelector(".btn-trier-decroissant");
+ 
+ btnTrierDecroissant.addEventListener("click", function () {
+     const piecesOrdonneesDecr = Array.from(pieces);
+     piecesOrdonneesDecr.sort(function (a, b) {
+         return b.prix - a.prix;
+      });
+      console.log(piecesOrdonneesDecr);
+ });
