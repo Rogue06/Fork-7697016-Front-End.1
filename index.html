@@ -4,7 +4,14 @@
     <meta charset="utf-8" />
     <title>Les Bonnes Pièces</title>
     <link rel="stylesheet" href="styles.css" />
-    <script defer type="module" src="pieces.js"></script>
+    <script type="module" src="pieces.js" defer></script>
+	<!--<script src="node_modules/chart.js/dist/chart.umd.js" defer></script> -->
+	<!--<script src="node_modules/chart.js/dist/chart.umd.js" defer></script> -->
+  <!--<script type="application/javascript" src="./node_modules/chart.js/dist/chart.umd.js" defer></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.0/dist/chart.umd.js" defer></script>
+  
+	
+	
   </head>
   <body>
     <header>
@@ -29,6 +36,25 @@
 		<br />
 		<p>Prix maximum:</p>
 		<input type="range" id="prix-max" name="prix-max" min="0" max="60" value="30" step="5" />
+		<h3>Ajouter un avis</h3>
+		<form class="formulaire-avis">
+			Identifiant de la pièce :<br>
+			<input type="number" name="piece-id"><br>
+			Nom d'utilisateur :<br>
+			<input type="text" name="utilisateur"><br>
+			Avis :<br>
+			<input type="text" name="commentaire"><br>
+			Nombre d'étoiles pour cette pièce :<br>
+			<input type="number" name="nbre-etoiles" min="0" max="5"><br>
+			<button>Envoyer</button>
+		</form>
+		<!-- code à ajouter-->
+		<h3>Données</h3>
+		<button class="btn-maj">Mettre à jour les pièces</button>
+		<h3>Aperçu des avis</h3>
+		<canvas id="graphique-avis" width="300" height="300"></canvas>
+		<h3>Statistiques commentaires</h3>
+		<canvas id="graphique-dispo" width="300" height="300"></canvas>
       </section>
 
       <!-- Fiches produits -->
